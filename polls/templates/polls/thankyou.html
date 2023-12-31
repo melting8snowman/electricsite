@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ElectricSite Thanks</title>
+    </head>
+
+
+    <body>
+		<h1>Thank you</h1>
+
+        <table>
+		<tr>
+		<th style="text-align:left">Username: <td>{{user.username}} 
+		</table>
+
+
+        <form action='logout/' method="POST">
+			{% csrf_token %}
+            <input type="submit" value="Logout"/>
+        </form>
+		
+        <h2>You successfully filled the contest data with</h2>
+
+		<ul>
+		{% for c in contests %}
+
+		First name:{{c.first_name}}
+		Last name:{{c.last_name}}
+		Email:{{c.email}}
+		</li>
+
+		{% endfor %}
+		</ul>
