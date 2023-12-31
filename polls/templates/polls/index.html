@@ -1,0 +1,41 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome to Electricsite</title>
+  </head>
+  <body>
+  
+    <p>
+	<H1>Welcome to Electricsite</h1>
+	
+	<br>
+	
+	
+	<H3>Polls</h3>
+	</p>
+	
+	{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<p>
+<h3>Participate in lucky draw</h3>
+
+<a href="/polls/contest/">Participate</a>
+
+</p>
+
+
+
+

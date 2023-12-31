@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ElectricSite</title>
+    </head>
+
+
+    <body>
+		<h1>Logged</h1>
+
+
+
+        <form action='logout/' method="POST">
+			
+			<!--Cross-site Request Forgery (CSRF) threat
+this site uses GET and POST methods without any CSRF protection
+fix add 			{% csrf_token %}			-->
+
+            <input type="submit" value="Logout"/>
+        </form>
+		
+        <h2>Contest</h2>
+
+        <form id='answer' action='../contest/' method="POST">  
+			{% csrf_token %}
+			
+			<span>First name:</span><br/>
+            <input type="text" name="first_name" required/><br/>
+			
+			<span>Last name:</span><br/>
+            <input type="text" name="last_name" required/><br/>
+			
+			<span>Email:</span><br/>
+            <input type="email" name="email" required/><br/>
+
+            <span>Answer:</span><br/>
+            <input type="text" name="answer" required/><br/>
+
+            <input type="submit" value="Answer"/>
+        </form>
+    </body>
+
+
+    </body>
+</html>
