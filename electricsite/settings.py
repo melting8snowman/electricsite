@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+<<<<<<< HEAD
 import os
+=======
+>>>>>>> e155754313e6cee09eeb673833dff3d3ef6f47f0
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,7 +42,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+<<<<<<< HEAD
 ##    "automated_logging",
+=======
+    #'automated_logging'
+>>>>>>> e155754313e6cee09eeb673833dff3d3ef6f47f0
 ]
 
 MIDDLEWARE = [
@@ -50,7 +57,11 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+<<<<<<< HEAD
 ##    "automated_logging.middleware.AutomatedLoggingMiddleware",
+=======
+    #'automated_logging.middleware.AutomatedLoggingMiddleware'
+>>>>>>> e155754313e6cee09eeb673833dff3d3ef6f47f0
 ]
 
 ROOT_URLCONF = "electricsite.urls"
@@ -97,6 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
 ]
 
+<<<<<<< HEAD
 ## Uncomment to enable direct logging with log level info
 #LOGGING = {
 #    "version": 1,
@@ -119,6 +131,8 @@ AUTH_PASSWORD_VALIDATORS = [
 #    },
 #}
 
+=======
+>>>>>>> e155754313e6cee09eeb673833dff3d3ef6f47f0
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

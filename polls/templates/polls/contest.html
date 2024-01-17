@@ -11,7 +11,14 @@
 
 
         <form action='logout/' method="POST">
+<<<<<<< HEAD
 
+=======
+			
+			<!--Cross-site Request Forgery (CSRF) threat
+this site uses GET and POST methods without any CSRF protection
+fix add 			{% csrf_token %}			-->
+>>>>>>> e155754313e6cee09eeb673833dff3d3ef6f47f0
 
             <input type="submit" value="Logout"/>
         </form>
@@ -19,6 +26,7 @@
         <h2>Contest</h2>
 
         <form id='answer' action='../contest/' method="POST">  
+<<<<<<< HEAD
 			
 			<!--Cross-site Request Forgery (CSRF) threat
 this site uses GET and POST methods without any CSRF protection
@@ -26,6 +34,9 @@ fix add the following {% csrf_token %}
 This is now already in the safe form as Django is otherwise blocking it from running
 	-->
 	{% csrf_token %}
+=======
+			{% csrf_token %}
+>>>>>>> e155754313e6cee09eeb673833dff3d3ef6f47f0
 			
 			<span>First name:</span><br/>
             <input type="text" name="first_name" required/><br/>
