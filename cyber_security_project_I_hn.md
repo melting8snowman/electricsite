@@ -1,5 +1,5 @@
 ﻿
-**Project on the OWASP 2017 list**
+# Project on the OWASP 2017 list
 
 This project depicts 5 flaws on the OWASP 2017 list security issues and supplies corresponding correction recommendations 
 
@@ -8,38 +8,36 @@ Link to Project: <https://github.com/melting8snowman/electricsite>
 
 
 
-
-
-**Installation Instructions**
+## Installation Instructions
 
 Installation instructions as per readme.md
 
-Clone source from github by:
+#### Clone source from github by:
 
-git clone git@github.com:melting8snowman/electricsite.git
+> git clone git@github.com:melting8snowman/electricsite.git
 
-Migrate data by running from main directory:
+#### Migrate data by running from main directory:
 
-python manage.py makemigrations 
+> python manage.py makemigrations 
 
-python manage.py migrate
+> python manage.py migrate
 
-start virtual server run from main directory
+#### Start virtual server run from main directory
 
-python manage.py runserver
-
-
+> python manage.py runserver
 
 
-**FLAW 1: Security Misconfiguration**
+
+
+## FLAW 1: Security Misconfiguration
 
 Source link: [electricsite/settings.py](https://github.com/melting8snowman/electricsite/blob/main/electricsite/settings.py#L27)  (Row 27)
 
-Description:
+#### Description:
 
 Security misconfiguration is apparently one of the most common issues on the OWASP list. That can happen in multiple different ways. Our example is a very basic one which can happen very easily – after moving into production one has forgotten to disable the DEBUG option. 
 
-How to fix it:
+#### How to fix it:
 
 In the settings.py file we would instead of 
 
@@ -51,7 +49,7 @@ DEBUG = False
 
 Django actually has quite a nice feature for checking the security configuration, the Security checklist can be accessed through the command
 
-python manage.py check --deploy
+> python manage.py check --deploy
 
 In our case there would still be quite a few to fix
 
@@ -75,23 +73,23 @@ WARNINGS:
 
 
 
-**FLAW 2: Using vulnerable and outdated components**
+## FLAW 2: Using vulnerable and outdated components
 
 Source link:
 
 [electricsite/views.py](https://github.com/melting8snowman/electricsite/blob/main/polls/views.py#L17)  (Row 17)
 
-Description:
+#### Description:
 
 Using components in python code is a give nowadays as one does not want to rewrite the contire code every time but to use libraries and components which are ready-made to be utilized. There is a danger for cybersecurity here as the component might be outdated or even worse typosquatted and thus malicious. Typosquatting means creating a rogue model which resembles the correct one but is slightly different by written name. 
 
 Compare 
 
-pip install python-dateutil
+> pip install python-dateutil
 
 to
 
-pip install python3-dateutil
+> pip install python3-dateutil
 
 The first is the correct package, latter is malicious package. Then using import dateutil in your code will add the malicious component into your code.
 
@@ -101,11 +99,11 @@ And here
 
 <https://news.sophos.com/en-us/2019/12/05/machine-raiding-python-libraries-squashed-by-community/>
 
-How to fix:
+#### How to fix:
 
 Detect which packages you have installed by running 
 
-pip freeze
+> pip freeze
 
 If all is well, you in your list you should see something like this
 
@@ -121,14 +119,13 @@ In short, use newest patched versions and be careful when spelling component nam
 
 
 
-
-**FLAW 3: Broken Authentication**
+## FLAW 3: Broken Authentication
 
 Source link: 
 
 [electricsite/settings.py](https://github.com/melting8snowman/electricsite/blob/main/electricsite/settings.py#L91-L104)  (Rows 91-104)
 
-Description:
+#### Description:
 
 Authentication and session management functions in web applications are used to verify the identity of the user and if they are incorrectly implemented, they allow attackers to compromise passwords, keys or sessions tokens. Attackers can exploit broken authentication with credential stuffing, automated brute force and dictionary attacks to gain other users’ indentities.
 
@@ -143,7 +140,7 @@ As per OWASP an application has broken authentication vulnerability if there are
 
 Our application accepts short passwords, furthermore the admin user currently has the above mentioned combination admin/admin which is specifically mentioned as an authentication vulnerability.
 
-How to fix it
+#### How to fix it
 
 Password management is something that should generally not be reinvented unnecessarily, and Django provides lots of configurable password management options and tools.  Django uses hashed passwords by default using the PBKDF2 algorithm with a SHA256 hash.  
 
@@ -174,13 +171,14 @@ AUTH\_PASSWORD\_VALIDATORS = [
 
 
 
-**FLAW 4: (SQL) Injection**
-
+## FLAW 4: (SQL) Injection
+Source link: 
 [electricsite/views.py](https://github.com/melting8snowman/electricsite/blob/main/polls/views.py#L95-L128) (Rows 95-128 in method ContestView)
 
-Description: SQL injection, is a common attack vector that uses malicious SQL code for backend database manipulation to access information that was not intended to be displayed. A malicious user can access this information by including code into user inputs and thus may include sensitive data not initially designed to be fetched by the application. This data could include any number of items, including sensitive company data, user lists or private customer details or basically any data in the database.
+#### Description: 
+SQL injection, is a common attack vector that uses malicious SQL code for backend database manipulation to access information that was not intended to be displayed. A malicious user can access this information by including code into user inputs and thus may include sensitive data not initially designed to be fetched by the application. This data could include any number of items, including sensitive company data, user lists or private customer details or basically any data in the database.
 
-How to fix it:
+#### How to fix it:
 
 There are multiple ways of preventing SQL injections, for example input validation and parameterized queries. In our example case, we are using SQLite, which can protect against SQL injections if instead of stringing together a SQL query, we specify user-supplied data as part of the params. 
 
@@ -195,12 +193,11 @@ we use
 db.execute("INSERT INTO Contest VALUES (?)", variable);
 
 
-**FLAW 5: Insufficient Logging and monitoring**
+## FLAW 5: Insufficient Logging and monitoring
+Source link: 
+[electricsite/settings.py](https://github.com/melting8snowman/electricsite/blob/main/electricsite/settings.py#L106-L126)  (Rows 42, 53, 106-126)
 
-Description:
-
-[electricsite/settings.py](https://github.com/melting8snowman/electricsite/blob/main/electricsite/settings.py#L106-L126)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  (Rows 42, 53, 106-126)
-
+#### Description:
 Currently there is no security logging in the application. 
 
 Application logging should always be included for security events. Application logs are invaluable data for:
@@ -215,11 +212,11 @@ Application logging should always be included for security events. Application l
 
 (source: https://cheatsheetseries.owasp.org/cheatsheets/Logging\_Cheat\_Sheet.html)
 
-How to fix it:
+#### How to fix it:
 
 We can add it for example by using the Django automated security logging by installing the component:
 
-pip install django-automated-logging
+> pip install django-automated-logging
 
 and then configuring the settings file to include the logging:
 
@@ -314,7 +311,7 @@ LOGGING = {
 
 and finally running the code
 
-python manage.py migrate automated\_logging
+> python manage.py migrate automated\_logging
 
 
 
