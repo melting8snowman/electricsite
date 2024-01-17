@@ -19,11 +19,6 @@ import dateutil.tz as tz
 ## as then you have the malicious component in your code 
 
 
-#__requires__= 'twisted==8.2.0'
-#import pkg_resources
-#pkg_resources.require("twisted==8.2.0")
-#import twisted  
-
 from .models import Question, Choice, Contests, PersonalData
 
 
@@ -78,13 +73,8 @@ def vote(request, question_id):
 def contestView(request):
     user = request.user
     if request.method == 'GET':
-
-        #pst_tz = dateutil.tz.gettz("PST")
-        #current_datetime_pst = dateutil.parser.parse("now", tz=pst_tz)
-        #print(current_datetime_pst)
         
-
-# Print run at in base time zone
+        # Print run at in base time zone
         local = tz.tzlocal()
         nyt = datetime.datetime.now()
         nyt = nyt.replace(tzinfo = local)
@@ -92,8 +82,6 @@ def contestView(request):
         utc = tz.tzutc()
         utc_nyt = nyt.astimezone(utc)
         print("Ran at UTC:", utc_nyt)
-
-
     
     if request.method == 'POST':
         print("posti")
