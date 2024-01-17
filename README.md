@@ -2,7 +2,7 @@
 **Electricsite for cyber security OWASP 2017 project**
 
 **Project Document:**
-[Link to Project Document](cyber_security_project_I_hn.pdf)
+[Link to Project Document](cyber_security_project_I_hn.md)
 
 
 **Installation instructions**
