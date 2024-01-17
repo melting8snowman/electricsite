@@ -3,7 +3,7 @@
 
 
 **Project Document:**
-[Link to Project Document](/electricsite/blob/main/electricsite/cyber_security_project_I_hn.pdf)
+[Link to Project Document](/main/electricsite/cyber_security_project_I_hn.pdf)
 
 
 **Installation instructions**
