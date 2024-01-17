@@ -1,10 +1,7 @@
 from django.urls import path
 
 from . import views
-<<<<<<< HEAD
 import datetime 
-=======
->>>>>>> e155754313e6cee09eeb673833dff3d3ef6f47f0
 from .views import contestView
 
 
