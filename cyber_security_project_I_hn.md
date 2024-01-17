@@ -143,6 +143,7 @@ Our application accepts short passwords, furthermore the admin user currently ha
 #### How to fix it
 
 Password management is something that should generally not be reinvented unnecessarily, and Django provides lots of configurable password management options and tools.  Django uses hashed passwords by default using the PBKDF2 algorithm with a SHA256 hash.  
+Line 91:
 
 #PASSWORD\_HASHERS = [
 
@@ -151,6 +152,7 @@ Password management is something that should generally not be reinvented unneces
 #]
 
 In addition there are multiple options for password management which can help us with the other authentication vulnerabilities relating to passwords.  In order to make longer passwords mandatory, we can utilize password validation with the option to set password length being minimum 12 digits. Furthermore we can disallow username / password combinations which are too close to each other using UserAttributeSimilarityValidator. These can be activated with uncommenting the below rows.
+Line 96:
 
 AUTH\_PASSWORD\_VALIDATORS = [
 
